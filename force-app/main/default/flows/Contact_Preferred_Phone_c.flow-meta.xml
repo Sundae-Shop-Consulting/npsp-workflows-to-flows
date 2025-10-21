@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Contact.Preferred_Phone__c workflow rule
+Workflow rule description: This workflow OVERWRITES the existing value in the standard Phone field based on the Preferred Phone field value.  This rule needs to be turned on manually after an Upgrade to this package.&quot;</description>
+    <formulas>
+        <name>Contact_PreferredPhoneFormula</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+$Record.npe01__PreferredPhone__c ,
+&quot;Work&quot;,
+$Record.npe01__WorkPhone__c ,
+&quot;Home&quot;,
+$Record.HomePhone,
+&quot;Mobile&quot;,
+$Record.MobilePhone,
+&quot;Other&quot;,
+$Record.OtherPhone,
+If(LEN( $Record.npe01__WorkPhone__c )&gt;0 , $Record.npe01__WorkPhone__c ,
+if(LEN( $Record.HomePhone)&gt;0, $Record.HomePhone,
+if(LEN( $Record.MobilePhone)&gt;0, $Record.MobilePhone,
+$Record.OtherPhone
+))))</expression>
+    </formulas>
+    <label>Contact.Preferred_Phone__c</label>
+    <migratedFromWorkflowRuleName>Contact.Preferred_Phone__c</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>Contact_PreferredPhoneFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>OR(  LEN({!$Record.Phone})=0, ISCHANGED({!$Record.npe01__PreferredPhone__c}) ,  ISCHANGED({!$Record.npe01__WorkPhone__c}) ,  ISCHANGED({!$Record.HomePhone}) ,  ISCHANGED({!$Record.MobilePhone}) , ISCHANGED({!$Record.OtherPhone})  )</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

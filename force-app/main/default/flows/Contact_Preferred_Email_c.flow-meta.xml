@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Contact.Preferred_Email__c workflow rule
+Workflow rule description: This workflow OVERWRITES the existing value in the standard Email field based on the Preferred Email field value.  This rule needs to be turned on manually after an Upgrade to this package.&quot;</description>
+    <formulas>
+        <name>Contact_PreferredEmailFormula</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+$Record.npe01__Preferred_Email__c ,
+
+&quot;Work&quot;,
+if(len($Record.npe01__WorkEmail__c)&gt;0, $Record.npe01__WorkEmail__c,
+if(len($Record.npe01__HomeEmail__c)&gt;0, $Record.npe01__HomeEmail__c,
+$Record.npe01__AlternateEmail__c)),
+
+&quot;Personal&quot;,
+if(len($Record.npe01__HomeEmail__c)&gt;0, $Record.npe01__HomeEmail__c,
+if(len($Record.npe01__WorkEmail__c)&gt;0, $Record.npe01__WorkEmail__c,
+$Record.npe01__AlternateEmail__c)),
+
+&quot;Home&quot;,
+if(len($Record.npe01__HomeEmail__c)&gt;0, $Record.npe01__HomeEmail__c,
+if(len($Record.npe01__WorkEmail__c)&gt;0, $Record.npe01__WorkEmail__c,
+$Record.npe01__AlternateEmail__c)),
+
+&quot;Alternate&quot;,
+if(len($Record.npe01__AlternateEmail__c)&gt;0, $Record.npe01__AlternateEmail__c,
+if(len($Record.npe01__WorkEmail__c)&gt;0, $Record.npe01__WorkEmail__c,
+$Record.npe01__HomeEmail__c)),
+
+If(LEN($Record.npe01__WorkEmail__c)&gt;0 , $Record.npe01__WorkEmail__c ,
+if(LEN( $Record.npe01__HomeEmail__c)&gt;0, $Record.npe01__HomeEmail__c,
+$Record.npe01__AlternateEmail__c
+)))</expression>
+    </formulas>
+    <label>Contact.Preferred_Email__c</label>
+    <migratedFromWorkflowRuleName>Contact.Preferred_Email__c</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>Contact_PreferredEmailFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>OR( LEN({!$Record.Email})=0, ISCHANGED({!$Record.npe01__Preferred_Email__c}) , ISCHANGED({!$Record.npe01__WorkEmail__c}) , ISCHANGED({!$Record.npe01__HomeEmail__c}) , ISCHANGED({!$Record.npe01__AlternateEmail__c})  )</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>
