@@ -1,0 +1,27 @@
+minimum_cumulusci_version: '4.6.0'
+project:
+    name: npsp-workflows-to-flows
+    package:
+        name: npsp-workflows-to-flows
+        api_version: '63.0'
+    dependencies:
+        - github: 'https://github.com/SalesforceFoundation/NPSP'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/npsp-workflows-to-flows/tests
+            options:
+                outputdir: robot/npsp-workflows-to-flows/results
+
+    robot_testdoc:
+        options:
+            path: robot/npsp-workflows-to-flows/tests
+            output: robot/npsp-workflows-to-flows/doc/npsp-workflows-to-flows_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
