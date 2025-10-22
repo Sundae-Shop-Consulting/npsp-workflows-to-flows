@@ -142,7 +142,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Preferred_Email_is_Alternate</targetReference>
+            <targetReference>Preferred_Email</targetReference>
         </connector>
         <filterFormula>AND(OR(
 AND(ISNEW(),LEN({!$Record.Email})&gt;0),
