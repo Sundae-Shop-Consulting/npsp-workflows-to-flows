@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Opportunity_Email_Acknowledgment</name>
+        <name>Email_Acknowledgment</name>
         <label>Email Acknowledgment</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>Opportunity.Opportunity_Email_Acknowledgment</actionName>
-        <actionType>emailAlert</actionType>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>SObjectRowId</name>
+            <name>recipientAddresses</name>
+            <value/>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
             <value>
-                <elementReference>$Record.Id</elementReference>
+                <stringValue>CurrentUser</stringValue>
             </value>
         </inputParameters>
-        <nameSegment>Opportunity.Opportunity_Email_Acknowledgment</nameSegment>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Thank you!</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 14px;&quot;&gt;Dear&amp;nbsp;{!$Record.Account.npo02__Informal_Greeting__c},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Thank you for your gift of&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(255, 255, 255);&quot;&gt;{!$Record.Amount} on&amp;nbsp;{!$Record.CloseDate}.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;We greatly appreciate your support!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;From all of us at&amp;nbsp;{!$Organization.Name}&lt;/span&gt;&lt;/p&gt;</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
         <offset>0</offset>
+        <versionString>2.0.1</versionString>
     </actionCalls>
     <apiVersion>65.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -48,7 +74,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Opportunity_Email_Acknowledgment</targetReference>
+            <targetReference>Email_Acknowledgment</targetReference>
         </connector>
         <inputAssignments>
             <field>npsp__Acknowledgment_Date__c</field>
