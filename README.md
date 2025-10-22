@@ -1,11 +1,10 @@
 # npsp-workflows-to-flows
 
-Add a brief description of this project here, in Markdown format.
-It will be shown on the main page of the project's GitHub repository.
+This is a small project to replace workflow rules packaged as part of the Nonprofit Success Pack with flows. These still need to be tested before being considered production ready. If you're interested in helping with that effort, please contact laura@sundaeshopconsulting.com.
 
 ## Development
 
-To work on this project in a scratch org:
+This project was developed using CumulusCI. To work on this project in a scratch org:
 
 1. [Set up CumulusCI](https://cumulusci.readthedocs.io/en/latest/tutorial.html)
 2. Run `cci flow run dev_org --org dev` to deploy this project.
