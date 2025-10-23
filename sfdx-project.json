@@ -1,1 +1,22 @@
-{"packageDirectories": [{"path": "force-app", "default": true}], "namespace": null, "sourceApiVersion": "63.0"}
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": false,
+      "package": "NPSPFlows",
+      "versionDescription": ""
+    }
+  ],
+  "packages": [
+    {
+      "name": "NPSPFlows",
+      "packageType": "Unlocked"
+    }
+  ],
+  "sourceApiVersion": "63.0",
+  "packageAliases": {
+    "NPSPFlows": "0Hobm0000001SdNCAU"
+  }
+}
