@@ -1,22 +1,29 @@
 {
   "packageDirectories": [
     {
+      "path": "force-app",
+      "default": true,
+      "package": "NPSPFlows",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
-      "path": "force-app",
-      "default": false,
-      "package": "NPSPFlows",
-      "versionDescription": ""
+      "dependencies": [
+        { "package": "npe01" },
+        { "package": "npo02" },
+        { "package": "npe03" },
+        { "package": "npe4" },
+        { "package": "npe5" },
+        { "package": "npsp" }
+      ]
     }
   ],
-  "packages": [
-    {
-      "name": "NPSPFlows",
-      "packageType": "Unlocked"
-    }
-  ],
-  "sourceApiVersion": "63.0",
+  "sourceApiVersion": "65.0",
   "packageAliases": {
-    "NPSPFlows": "0Hobm0000001SdNCAU"
+    "NPSPFlows": "0Hobm0000001SdNCAU",
+    "npe01": "04t4w0000004ALTAA2",
+    "npo02": "04t4w000000gfNKAAY",
+    "npe03": "04t4w000000gfNFAAY",
+    "npe4": "04t4w000001A00cAAC",
+    "npe5": "04t4w000000tQ1HAAU",
+    "npsp": "04tKd000000ekgjIAA"
   }
 }
