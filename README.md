@@ -1,6 +1,10 @@
 # npsp-workflows-to-flows
 
-This is a small project to replace workflow rules packaged as part of the Nonprofit Success Pack with flows. These still need to be tested before being considered production ready. If you're interested in helping with that effort, please contact laura@sundaeshopconsulting.com.
+This is a small project to replace workflow rules packaged as part of the Nonprofit Success Pack with flows. These still need to be tested before being considered production ready. 
+
+### Install links
+- [Install in a dev org](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tbm000000CXoD)
+- [install in a sandbox or scratch org](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tbm000000CXoD)
 
 ## Development
 
