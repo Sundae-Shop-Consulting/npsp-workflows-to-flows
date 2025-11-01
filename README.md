@@ -2,9 +2,7 @@
 
 This is a small project to replace workflow rules packaged as part of the Nonprofit Success Pack with flows. These still need to be tested before being considered production ready. 
 
-Rather than migrate the existing workflows as is (with four different workflow rules to manage contact phone, for example) this consolidates the field updates to better use flow's capabilities.
-
-### Install and Setup
+## Install and Setup
 - [Install in a dev org](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tbm000000CXoD)
 - [Install in a sandbox or scratch org](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tbm000000CXoD)
 
@@ -12,6 +10,10 @@ Once the package is installed you will still need to activate the flows:
 - Contact: Email Changed
 - Contact: Phone Changed
 - Opportunity: Copy FMV to Amount
+
+## Flow Design
+
+Rather than migrate the existing workflows as-is (with four different workflow rules to manage contact phone, for example) this consolidates the field updates to better use flow's capabilities.
 
 The following workflow rules are replaced by Contact: Email Changed:
 - Contact.EmailChanged_Alternate
