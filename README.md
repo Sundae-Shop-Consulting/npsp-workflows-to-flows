@@ -11,6 +11,8 @@ Once the package is installed you will still need to activate the flows:
 - Contact: Phone Changed
 - Opportunity: Copy FMV to Amount
 
+Make sure you deactivate the workflow rules that these replace.
+
 ## Flow Design
 
 Rather than migrate the existing workflows as-is (with four different workflow rules to manage contact phone, for example) this consolidates the field updates to better use flow's capabilities.
@@ -29,7 +31,6 @@ The following workflow rules are replaced by Contact: Phone Changed:
 - Contact.PhoneChanged_Work
 - Contact.Preferred_Phone__c
 - Phone only: Paste to Work
-
 
 Opportunity Copy FMV to Amount is replaced by Opportunity: Copy FMV to Amount.
 
